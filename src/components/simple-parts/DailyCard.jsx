@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { weeklySchedule } from "../../data/schedule";
 
-const DailyCard = ({ day, maxDisplay }) => {
+const DailyCard = ({ day, splitDisplay }) => {
 
   const [displayedHalf, setDisplayedHalf] = useState("firstHalf");
 
@@ -50,10 +50,10 @@ const DailyCard = ({ day, maxDisplay }) => {
             {day}
           </div>
           <div className="card-body daily-card-item">
-            {classes.length > maxDisplay ? (
+            {classes.length > splitDisplay ? (
               displayedHalf === "firstHalf" ? (
                 <div> 
-                  {classes.slice(0, maxDisplay)}
+                  {classes.slice(0, splitDisplay)}
                   <div className="mt-3">
                     <FontAwesomeIcon icon={faChevronDown} size="xl"/>
                   </div>
@@ -63,11 +63,11 @@ const DailyCard = ({ day, maxDisplay }) => {
                   <div className="mb-3">
                     <FontAwesomeIcon icon={faChevronDown} size="xl" rotation={180} />
                   </div>
-                  {classes.slice(maxDisplay, classes.length)}
+                  {classes.slice(splitDisplay, classes.length)}
                 </div>
               ) 
             ) : (
-              classes.slice(0, maxDisplay)
+              classes
             )}
           </div>
         </div>

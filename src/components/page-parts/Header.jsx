@@ -7,8 +7,8 @@ import Settings from "../simple-parts/Settings";
 import Time from "../simple-parts/Time";
 
 
-const Header = ({ stateLabName, stateTimer, stateDailyMax, stateWeeklyMax, errorVariables }) => {
-  const { labName } = stateLabName;
+const Header = ({ labName, loadSchedule, loadPhotos, loadOther, api }) => {
+
   const [showModal, setShowModal] = useState(false);
   const [showSettingsButton, setShowSettingsButton] = useState(false);
 
@@ -56,12 +56,11 @@ const Header = ({ stateLabName, stateTimer, stateDailyMax, stateWeeklyMax, error
 
       {/* Settings Window */}
       <Settings
-        stateLabName={stateLabName}
-        stateTimer={stateTimer}
-        stateDailyMax={stateDailyMax}
-        stateWeeklyMax={stateWeeklyMax}
+        loadSchedule={loadSchedule}
+        loadPhotos={loadPhotos}
+        loadOther={loadOther}
         stateShowModal={{ showModal, setShowModal }}
-        errorVariables={errorVariables}
+        api={api}
       />
     </header>
   );

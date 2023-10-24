@@ -2,7 +2,7 @@ import React from "react";
 import SingleCard from "../simple-parts/SingleCard";
 import DailyCard from "../simple-parts/DailyCard";
 
-const DisplayDaily = ({ maxDisplay }) => {
+const DisplayDaily = ({ splitDaily }) => {
   const date = new Date();
   const options = { weekday: "long" };
   const dayOfWeek = date.toLocaleString("en-US", options);
@@ -33,7 +33,7 @@ const DisplayDaily = ({ maxDisplay }) => {
           className="h-100 w-50" style={{paddingRight: "0px", paddingLeft: "0px"}}
         >
 
-          <DailyCard day={dayOfWeek} maxDisplay={maxDisplay} />
+          <DailyCard day={dayOfWeek} splitDisplay={splitDaily} />
 
         </section>
       </div>

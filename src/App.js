@@ -10,19 +10,18 @@ function App() {
   // Settings Options
   const [labName, setLabName] = useState("Lab Name");
   const [timer, setTimer] = useState(5_000);
-  const [dailyMax, setDailyMax] = useState(5);
-  const [weeklyMax, setWeeklyMax] = useState(4);
+  const [splitDaily, setSplitDaily] = useState(5);
+  const [splitWeekly, setSplitWeekly] = useState(4);
 
-  // reading schedule
-  const [hasError, setHasError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  // data loads
+  const [loadSchedule, setLoadSchedule] = useState(false);
+  const [loadPhotos, setLoadPhotos] = useState(false);
+  const [loadOther, setLoadOther] = useState(false);
 
   // read from api
   const updateWeeklySchedule = () => {
 
     const apiUrl = "/api/v1/schedule";
-
-    setHasError(false);
 
     fetch(apiUrl)
       .then((res) => res.json())
@@ -36,18 +35,16 @@ function App() {
         weeklySchedule.length = 0;
         const classes = out.classes;
         classes.forEach((item) => weeklySchedule.push(item));
+        setLoadSchedule(true);
       })
       .catch((error) => {
-        setErrorMessage("Error, try again later...");
-        setHasError(true);
+        setLoadSchedule(false);
       });
   };
 
   const updateImages = () => {
 
     const apiUrl = "http://localhost:8000/api/v1/images";
-
-    setHasError(false);
 
     fetch(apiUrl)
       .then((res) => res.json())
@@ -60,10 +57,34 @@ function App() {
       .then((out) => {
         pictures.length = 0;
         out.images.forEach((item) => pictures.push(item));
+        setLoadPhotos(true);
       })
       .catch((error) => {
-        setErrorMessage("Error, try again later...");
-        setHasError(true);
+        setLoadPhotos(false);
+      })
+  };
+
+  const updateOther = () => {
+
+    const apiUrl = "http://localhost:8000/api/v1/settings";
+
+    fetch(apiUrl)
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.error) {
+          throw new Error(res.error);
+        }
+        return res;
+      })
+      .then((out) => {
+        setLabName(out.labName);
+        setSplitDaily(out.dailysplit);
+        setSplitWeekly(out.weeklysplit);
+        setTimer(out.timer * 1000);
+        setLoadOther(true);
+      })
+      .catch((error) => {
+        setLoadOther(false);
       })
   };
 
@@ -72,6 +93,7 @@ function App() {
     const interval = setInterval(() => {
       updateWeeklySchedule();
       updateImages();
+      updateOther();
     }, 3_600_000);
 
     return () => {
@@ -82,13 +104,13 @@ function App() {
   return (
     <div className="m-0 border-0 h-100 w-100 text-center background">
       <Header
-        stateLabName={{ labName, setLabName }}
-        stateTimer={{ timer, setTimer }}
-        stateDailyMax={{ dailyMax, setDailyMax }}
-        stateWeeklyMax={{ weeklyMax, setWeeklyMax }}
-        errorVariables={{ hasError, errorMessage, updateWeeklySchedule, updateImages }}
+        labName={labName}
+        loadSchedule={loadSchedule}
+        loadPhotos={loadPhotos}
+        loadOther={loadOther}
+        api={{ updateWeeklySchedule, updateImages, updateOther }}
       />
-      <Display timer={timer} dailyMax={dailyMax} weeklyMax={weeklyMax} />
+      <Display timer={timer} splitDaily={splitDaily} splitWeekly={splitWeekly} />
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React from "react";
 import DailyCard from "../simple-parts/DailyCard";
 import { weeklySchedule } from "../../data/schedule";
 
-const DisplayWeekly = ({ maxDisplay }) => {
+const DisplayWeekly = ({ splitWeekly }) => {
   const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
 
   const hasSaturday = weeklySchedule.some((item) => item.day === "Sat");
@@ -16,7 +16,7 @@ const DisplayWeekly = ({ maxDisplay }) => {
         {/* Render DailyCard components for a week */}
         {days.map((day, index) => (
           <div key={index} className="h-100 col">
-            <DailyCard day={day} maxDisplay={maxDisplay} />
+            <DailyCard day={day} splitDisplay={splitWeekly} />
           </div>
         ))}
       </div>

@@ -1,22 +1,13 @@
 import { React } from "react";
 import { Modal } from "react-bootstrap";
-import ScheduleUpdater from "./ScheduleUpdater";
-import SettingsNumberInput from "./SettingsNumberInput";
+import Updater from "./Updater";
 
-const Settings = ({ stateLabName, stateTimer, stateDailyMax, stateWeeklyMax, stateShowModal, errorVariables }) => {
+const Settings = ({ stateShowModal, loadSchedule, loadPhotos, loadOther, api }) => {
 
-  const { labName, setLabName } = stateLabName;
-  const { timer, setTimer } = stateTimer;
-  const { dailyMax, setDailyMax } = stateDailyMax;
-  const { weeklyMax, setWeeklyMax } = stateWeeklyMax;
   const { showModal, setShowModal } = stateShowModal;
 
   const handleCloseModal = () => {
     setShowModal(false);
-  };
-
-  const handleLabNameChange = (event) => {
-    setLabName(event.target.value);
   };
 
   return (
@@ -26,38 +17,51 @@ const Settings = ({ stateLabName, stateTimer, stateDailyMax, stateWeeklyMax, sta
       </Modal.Header>
 
       <Modal.Body>
-        <div className="row mb-3">
-          <div className="col-4">Lab Name:</div>
-          <div className="col-8">
-            <input
-              id="labNameInput"
-              type="text"
-              className="form-control text-center"
-              defaultValue={labName}
-              onChange={handleLabNameChange}
-            />
+
+      <div className="row mb-3">
+          <div className="col-4">Version:</div>
+          <div className="col-8 text-center">
+            v0.8
           </div>
         </div>
 
-        <SettingsNumberInput 
-          stateNumber={{ num: timer, setNumber: setTimer }} 
-          propsNumber={{ settingsName:"Timer", minNum: 5_000, maxNum: 30_000, stepNum: 5_000, displayFormatNum: ((timer) => `${timer/1000} seconds`)}} 
-        />
-
-        <SettingsNumberInput 
-          stateNumber={{ num: dailyMax, setNumber: setDailyMax }} 
-          propsNumber={{ settingsName:"Daily Max", minNum: 1, maxNum: 8, stepNum: 1, displayFormatNum: ((dailyMax) => `${dailyMax} classes`)}} 
-        />
-
-        <SettingsNumberInput 
-          stateNumber={{ num: weeklyMax, setNumber: setWeeklyMax }} 
-          propsNumber={{ settingsName:"Weekly Max", minNum: 1, maxNum: 8, stepNum: 1, displayFormatNum: ((weeklyMax) => `${weeklyMax} classes`)}} 
-        />
+        <div className="row mb-3">
+          <div className="col-4">Data Update:</div>
+          <div className="col-8">
+            <Updater api={api}/>
+          </div>
+        </div>
 
         <div className="row mb-3">
-          <div className="col-4">Manual Update:</div>
-          <div className="col-8">
-            <ScheduleUpdater errorVariables={errorVariables} />
+          <div className="col-4">Schedule:</div>
+          <div className="col-8 text-center">
+            { 
+              loadSchedule? 
+              <p className="text-success text-center m-0">Connected</p>:
+              <p className="text-danger text-center m-0">Disconnected</p>
+            }
+          </div>
+        </div>
+
+        <div className="row mb-3">
+          <div className="col-4">Photos:</div>
+          <div className="col-8 text-center">
+            { 
+              loadPhotos? 
+              <p className="text-success text-center m-0">Connected</p>:
+              <p className="text-danger text-center m-0">Disconnected</p>
+            }
+          </div>
+        </div>
+
+        <div className="row mb-3">
+          <div className="col-4">Other:</div>
+          <div className="col-8 text-center">
+            { 
+              loadOther? 
+              <p className="text-success text-center m-0">Connected</p>:
+              <p className="text-danger text-center m-0">Disconnected</p>
+            }
           </div>
         </div>
 

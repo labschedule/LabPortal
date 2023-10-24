@@ -5,13 +5,13 @@ import DisplayPictures from "./DisplayPictures";
 
 import { pictures } from "../../data/pictures";
 
-const Display = ({ timer, dailyMax, weeklyMax }) => {
+const Display = ({ timer, splitDaily, splitWeekly }) => {
 
     // Display Daily or Weekly with animation
     const [currentComponent, setCurrentComponent] = useState("DisplayDaily");
     const [animationClass, setAnimationClass] = useState("");
     const [pictureCounter, setPictureCounter] = useState(0);
-    let displayComponent = <DisplayDaily maxDisplay={dailyMax} />;
+    let displayComponent = <DisplayDaily splitDaily={splitDaily} />;
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -58,10 +58,10 @@ const Display = ({ timer, dailyMax, weeklyMax }) => {
 
     switch (currentComponent) {
         case "DisplayDaily":
-          displayComponent = <DisplayDaily maxDisplay={dailyMax} />;
+          displayComponent = <DisplayDaily splitDaily={splitDaily} />;
           break;
         case "DisplayWeekly":
-          displayComponent = <DisplayWeekly maxDisplay={weeklyMax} />;
+          displayComponent = <DisplayWeekly splitWeekly={splitWeekly} />;
           break;
         default:
           displayComponent = <DisplayPictures pictureName={pictures[pictureCounter]} />;
