@@ -1,10 +1,16 @@
 import { React } from "react";
 import { Modal } from "react-bootstrap";
 import Updater from "./Updater";
+import SettingsRow from "./SettingsRow";
 
-const Settings = ({ stateShowModal, loadSchedule, loadPhotos, loadOther, api }) => {
+import { weeklySchedule } from "../../data/schedule";
+import { pictures } from "../../data/pictures";
+
+const Settings = ({ stateShowModal, data, api, api_status }) => {
 
   const { showModal, setShowModal } = stateShowModal;
+
+  const { labName, timer, splitDaily, splitWeekly } = data;
 
   const handleCloseModal = () => {
     setShowModal(false);
@@ -18,57 +24,47 @@ const Settings = ({ stateShowModal, loadSchedule, loadPhotos, loadOther, api }) 
 
       <Modal.Body>
 
-      <div className="row mb-3">
-          <div className="col-4">Version:</div>
-          <div className="col-8 text-center">
-            v0.8
+        <SettingsRow title={"Version:"} value={"v0.9"} />
+
+        <SettingsRow title={"Name:"} value={labName} />
+
+        <SettingsRow title={"Timer:"} value={`${timer} sec`} />
+
+        <SettingsRow title={"Split-daily:"} value={`${splitDaily} classes`} />
+
+        <SettingsRow title={"Split-weekly:"} value={`${splitWeekly} classes`} />
+
+        <SettingsRow title={"Schedule:"} value={`${weeklySchedule.length} classes`} />
+
+        <SettingsRow title={"Images:"} value={`${pictures.length} found`} />
+
+        <SettingsRow title={"Last updated:"} value={`${5} min ${5} sec`} />
+
+        <div className="row mt-4 mb-2">
+            <Updater api={api} api_status={api_status} />
+        </div>
+
+        {/* <div className="row text-center mb-3">
+          <div className="d-flex flex-column align-items-center">
+              settings
           </div>
         </div>
 
-        <div className="row mb-3">
-          <div className="col-4">Data Update:</div>
-          <div className="col-8">
-            <Updater api={api}/>
+        <div className="row text-center mb-3">
+          <div className="d-flex flex-column align-items-center">
+              schedule
           </div>
         </div>
 
-        <div className="row mb-3">
-          <div className="col-4">Schedule:</div>
-          <div className="col-8 text-center">
-            { 
-              loadSchedule? 
-              <p className="text-success text-center m-0">Connected</p>:
-              <p className="text-danger text-center m-0">Disconnected</p>
-            }
+        <div className="row text-center mb-3">
+          <div className="d-flex flex-column align-items-center">
+              images
           </div>
-        </div>
-
-        <div className="row mb-3">
-          <div className="col-4">Photos:</div>
-          <div className="col-8 text-center">
-            { 
-              loadPhotos? 
-              <p className="text-success text-center m-0">Connected</p>:
-              <p className="text-danger text-center m-0">Disconnected</p>
-            }
-          </div>
-        </div>
-
-        <div className="row mb-3">
-          <div className="col-4">Other:</div>
-          <div className="col-8 text-center">
-            { 
-              loadOther? 
-              <p className="text-success text-center m-0">Connected</p>:
-              <p className="text-danger text-center m-0">Disconnected</p>
-            }
-          </div>
-        </div>
+        </div> */}
 
       </Modal.Body>
 
       <Modal.Footer>
-        {/* Add Button to interact with file upload */}
       </Modal.Footer>
     </Modal>
   );

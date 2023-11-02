@@ -9,7 +9,7 @@ import { pictures } from "./data/pictures";
 function App() {
   // Settings Options
   const [labName, setLabName] = useState("Lab Name");
-  const [timer, setTimer] = useState(5_000);
+  const [timer, setTimer] = useState(5);
   const [splitDaily, setSplitDaily] = useState(5);
   const [splitWeekly, setSplitWeekly] = useState(4);
 
@@ -23,22 +23,28 @@ function App() {
 
     const apiUrl = "/api/v1/schedule";
 
+    setLoadSchedule(false);
+
     fetch(apiUrl)
       .then((res) => res.json())
       .then((res) => {
         if (res.error) {
           throw new Error(res.error);
         }
-        return res;
+        return res.classes;
       })
-      .then((out) => {
-        weeklySchedule.length = 0;
-        const classes = out.classes;
-        classes.forEach((item) => weeklySchedule.push(item));
+      .then((classes) => {
+
+        if (classes.length) {
+
+          weeklySchedule.length = 0;
+          classes.forEach((item) => weeklySchedule.push(item));
+
+        }
         setLoadSchedule(true);
       })
       .catch((error) => {
-        setLoadSchedule(false);
+        console.log(error)
       });
   };
 
@@ -46,27 +52,33 @@ function App() {
 
     const apiUrl = "http://localhost:8000/api/v1/images";
 
+    setLoadPhotos(false);
+
     fetch(apiUrl)
       .then((res) => res.json())
       .then((res) => {
         if (res.error) {
           throw new Error(res.error);
         }
-        return res;
+        return res.images;
       })
-      .then((out) => {
-        pictures.length = 0;
-        out.images.forEach((item) => pictures.push(item));
+      .then((images) => {
+        if (images.length) {
+          pictures.length = 0;
+          images.forEach((item) => pictures.push(item));
+        }
         setLoadPhotos(true);
       })
       .catch((error) => {
-        setLoadPhotos(false);
+        console.log(error);
       })
   };
 
   const updateOther = () => {
 
     const apiUrl = "http://localhost:8000/api/v1/settings";
+
+    setLoadOther(false);
 
     fetch(apiUrl)
       .then((res) => res.json())
@@ -80,15 +92,15 @@ function App() {
         setLabName(out.labName);
         setSplitDaily(out.dailysplit);
         setSplitWeekly(out.weeklysplit);
-        setTimer(out.timer * 1000);
+        setTimer(out.timer);
         setLoadOther(true);
       })
       .catch((error) => {
-        setLoadOther(false);
+        console.log(error);
       })
   };
 
-  // repeated read
+  // repeated api calls
   useEffect(() => {
     const interval = setInterval(() => {
       updateWeeklySchedule();
@@ -104,11 +116,9 @@ function App() {
   return (
     <div className="m-0 border-0 h-100 w-100 text-center background">
       <Header
-        labName={labName}
-        loadSchedule={loadSchedule}
-        loadPhotos={loadPhotos}
-        loadOther={loadOther}
+        data={{ labName, timer, splitDaily, splitWeekly }}
         api={{ updateWeeklySchedule, updateImages, updateOther }}
+        api_status={{ loadSchedule, loadPhotos, loadOther }}
       />
       <Display timer={timer} splitDaily={splitDaily} splitWeekly={splitWeekly} />
     </div>

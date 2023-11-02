@@ -48,7 +48,7 @@ const Display = ({ timer, splitDaily, splitWeekly }) => {
             setAnimationClass("slide-in-right");
 
             }, 900);
-        }, timer);
+        }, timer*1000);
 
         return () => {
             clearInterval(interval);

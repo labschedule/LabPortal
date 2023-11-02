@@ -7,7 +7,9 @@ import Settings from "../simple-parts/Settings";
 import Time from "../simple-parts/Time";
 
 
-const Header = ({ labName, loadSchedule, loadPhotos, loadOther, api }) => {
+const Header = ({ data, api, api_status }) => {
+
+  const { labName } = data;
 
   const [showModal, setShowModal] = useState(false);
   const [showSettingsButton, setShowSettingsButton] = useState(false);
@@ -56,11 +58,10 @@ const Header = ({ labName, loadSchedule, loadPhotos, loadOther, api }) => {
 
       {/* Settings Window */}
       <Settings
-        loadSchedule={loadSchedule}
-        loadPhotos={loadPhotos}
-        loadOther={loadOther}
         stateShowModal={{ showModal, setShowModal }}
+        data={data}
         api={api}
+        api_status={api_status}
       />
     </header>
   );
