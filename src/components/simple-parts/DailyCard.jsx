@@ -19,11 +19,12 @@ const DailyCard = ({ day, splitDisplay }) => {
     return () => {
       clearInterval(interval);
     };
-  });
+  }, []);
 
   const dailySchedule = weeklySchedule.filter(
     (item) => item.day === day.slice(0, 3)
   );
+
   const sortedSchedule = dailySchedule.sort((a, b) => a.time > b.time);
 
   const classes = sortedSchedule.map((classItem) => (

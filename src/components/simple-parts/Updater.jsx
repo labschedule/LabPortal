@@ -5,7 +5,7 @@ import ApiStatus from "./ApiStatus";
 
 const Updater = ({ api, api_status }) => {
 
-    const { updateWeeklySchedule, updateImages, updateOther } = api;
+    const { updateWeeklySchedule, updateImages, updateOther, resetUpdateTimer } = api;
 
     const { loadSchedule, loadPhotos, loadOther } = api_status;
 
@@ -13,6 +13,7 @@ const Updater = ({ api, api_status }) => {
         updateWeeklySchedule();
         updateImages();
         updateOther();
+        resetUpdateTimer();
     }
 
     const all_api_con = loadSchedule & loadPhotos & loadOther;

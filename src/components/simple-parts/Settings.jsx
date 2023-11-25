@@ -10,11 +10,25 @@ const Settings = ({ stateShowModal, data, api, api_status }) => {
 
   const { showModal, setShowModal } = stateShowModal;
 
-  const { labName, timer, splitDaily, splitWeekly } = data;
+  const { labName, timer, splitDaily, splitWeekly, lastUpdate } = data;
 
   const handleCloseModal = () => {
     setShowModal(false);
   };
+
+  const int2timer = (sec) => {
+
+    const hours = Math.floor(sec/3600);
+    const minutes = Math.floor(sec/60);
+    const seconds = sec % 60;
+
+    const hoursDisplay = hours > 0 ? hours.toString().padStart(2, '0') + 'h' : '';
+    const minutesDisplay = minutes > 0 ? minutes.toString() + 'm' : '';
+    const secondsDisplay = seconds.toString() + 's';
+
+    return `${hoursDisplay} ${minutesDisplay} ${secondsDisplay}`
+
+  }
 
   return (
     <Modal show={showModal} onHide={handleCloseModal} centered>
@@ -38,29 +52,11 @@ const Settings = ({ stateShowModal, data, api, api_status }) => {
 
         <SettingsRow title={"Images:"} value={`${pictures.length} found`} />
 
-        <SettingsRow title={"Last updated:"} value={`${5} min ${5} sec`} />
+        <SettingsRow title={"Last updated:"} value={int2timer(lastUpdate)} />
 
         <div className="row mt-4 mb-2">
             <Updater api={api} api_status={api_status} />
         </div>
-
-        {/* <div className="row text-center mb-3">
-          <div className="d-flex flex-column align-items-center">
-              settings
-          </div>
-        </div>
-
-        <div className="row text-center mb-3">
-          <div className="d-flex flex-column align-items-center">
-              schedule
-          </div>
-        </div>
-
-        <div className="row text-center mb-3">
-          <div className="d-flex flex-column align-items-center">
-              images
-          </div>
-        </div> */}
 
       </Modal.Body>
 

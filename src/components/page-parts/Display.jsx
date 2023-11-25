@@ -12,48 +12,49 @@ const Display = ({ timer, splitDaily, splitWeekly }) => {
     const [animationClass, setAnimationClass] = useState("");
     const [pictureCounter, setPictureCounter] = useState(0);
     let displayComponent = <DisplayDaily splitDaily={splitDaily} />;
-
+  
     useEffect(() => {
-        const interval = setInterval(() => {
-            setAnimationClass("slide-out-left");
 
-            setTimeout(() => {
+      const interval = setInterval(() => {
+          setAnimationClass("slide-out-left");
 
-            switch(currentComponent) {
-                case "DisplayDaily":
-                  setCurrentComponent("DisplayWeekly");
-                  break;
-                case "DisplayWeekly":
-                  if (pictureCounter+1 < pictures.length){
-                    setCurrentComponent("DisplayPictures");
-                  }
-                  else {
-                    setCurrentComponent("DisplayDaily");
-                  }
-                  break;
-                case "DisplayPictures":
-                  if (pictureCounter+1 < pictures.length){
-                    setPictureCounter(pictureCounter+1);
-                    setCurrentComponent("DisplayPictures");
-                  }
-                  else {
-                    setPictureCounter(0)
-                    setCurrentComponent("DisplayDaily");
-                  }
-                  break;
-                default:
+          setTimeout(() => {
+
+          switch(currentComponent) {
+              case "DisplayDaily":
+                setCurrentComponent("DisplayWeekly");
+                break;
+              case "DisplayWeekly":
+                if (pictureCounter+1 < pictures.length){
+                  setCurrentComponent("DisplayPictures");
+                }
+                else {
                   setCurrentComponent("DisplayDaily");
-            }
+                }
+                break;
+              case "DisplayPictures":
+                if (pictureCounter+1 < pictures.length){
+                  setPictureCounter(pictureCounter+1);
+                  setCurrentComponent("DisplayPictures");
+                }
+                else {
+                  setPictureCounter(0);
+                  setCurrentComponent("DisplayDaily");
+                }
+                break;
+              default:
+                setCurrentComponent("DisplayDaily");
+          }
 
-            setAnimationClass("slide-in-right");
+          setAnimationClass("slide-in-right");
 
-            }, 900);
-        }, timer*1000);
+          }, 900);
+      }, timer*1000);
 
-        return () => {
-            clearInterval(interval);
-        };
-    });
+      return () => {
+          clearInterval(interval);
+      };
+    }, [currentComponent, pictureCounter, timer]);
 
 
     switch (currentComponent) {

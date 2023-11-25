@@ -12,6 +12,7 @@ function App() {
   const [timer, setTimer] = useState(5);
   const [splitDaily, setSplitDaily] = useState(5);
   const [splitWeekly, setSplitWeekly] = useState(4);
+  const [lastUpdate, setLastUpdate] = useState(0);
 
   // data loads
   const [loadSchedule, setLoadSchedule] = useState(false);
@@ -102,22 +103,42 @@ function App() {
 
   // repeated api calls
   useEffect(() => {
+
+    const second = 1000;
+    const minute = 60 * second;
+
     const interval = setInterval(() => {
       updateWeeklySchedule();
       updateImages();
       updateOther();
-    }, 3_600_000);
+      resetUpdateTimer();
+    }, 60*minute);
 
     return () => {
       clearInterval(interval);
     };
-  });
+  }, []);
+
+  const resetUpdateTimer = () => {
+    setLastUpdate(0);
+  }
+
+  useEffect(() => {
+
+    const interval = setInterval(() => {
+      setLastUpdate((prevUpdate) => prevUpdate + 1);
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   return (
     <div className="m-0 border-0 h-100 w-100 text-center background">
       <Header
-        data={{ labName, timer, splitDaily, splitWeekly }}
-        api={{ updateWeeklySchedule, updateImages, updateOther }}
+        data={{ labName, timer, splitDaily, splitWeekly, lastUpdate }}
+        api={{ updateWeeklySchedule, updateImages, updateOther, resetUpdateTimer }}
         api_status={{ loadSchedule, loadPhotos, loadOther }}
       />
       <Display timer={timer} splitDaily={splitDaily} splitWeekly={splitWeekly} />
