@@ -112,7 +112,7 @@ function App() {
       updateImages();
       updateOther();
       resetUpdateTimer();
-    }, 60*minute);
+    }, 10*minute);
 
     return () => {
       clearInterval(interval);

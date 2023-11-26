@@ -25,7 +25,7 @@ const Display = ({ timer, splitDaily, splitWeekly }) => {
                 setCurrentComponent("DisplayWeekly");
                 break;
               case "DisplayWeekly":
-                if (pictureCounter+1 < pictures.length){
+                if (pictures.length !== 0){
                   setCurrentComponent("DisplayPictures");
                 }
                 else {
