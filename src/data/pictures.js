@@ -1,2 +1,3 @@
-
-export const pictures = ["logo.png"];
+export const fileList = [
+  "logo.png"
+];
