@@ -5,13 +5,14 @@ import "./App.css";
 
 import { weeklySchedule } from "./data/schedule";
 import { pictures } from "./data/pictures";
+import { settings } from "./data/settings";
 
 function App() {
   // Settings Options
-  const [labName, setLabName] = useState("Lab Name");
-  const [timer, setTimer] = useState(5);
-  const [splitDaily, setSplitDaily] = useState(5);
-  const [splitWeekly, setSplitWeekly] = useState(4);
+  const [labName, setLabName] = useState(settings.labName);
+  const [timer, setTimer] = useState(settings.timer);
+  const [splitDaily, setSplitDaily] = useState(settings.dailysplit);
+  const [splitWeekly, setSplitWeekly] = useState(settings.weeklysplit);
   const [lastUpdate, setLastUpdate] = useState(0);
 
   // data loads
@@ -102,37 +103,27 @@ function App() {
   };
 
   // repeated api calls
-  useEffect(() => {
-
-    const second = 1000;
-    const minute = 60 * second;
-
-    const interval = setInterval(() => {
-      updateWeeklySchedule();
-      updateImages();
-      updateOther();
-      resetUpdateTimer();
-    }, 10*minute);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+  // useEffect(() => {
+  //   updateWeeklySchedule();
+  //   updateImages();
+  //   updateOther();
+  //   resetUpdateTimer();
+  // }, []);
 
   const resetUpdateTimer = () => {
     setLastUpdate(0);
   }
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    const interval = setInterval(() => {
-      setLastUpdate((prevUpdate) => prevUpdate + 1);
-    }, 1000);
+  //   const interval = setInterval(() => {
+  //     setLastUpdate((prevUpdate) => prevUpdate + 1);
+  //   }, 1000);
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, []);
 
   return (
     <div className="m-0 border-0 h-100 w-100 text-center background">

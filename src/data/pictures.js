@@ -1,3 +1,2 @@
-const pictures = []
 
-module.exports = { pictures };
+export const pictures = ["logo.png"];
