@@ -2,7 +2,7 @@ import React from "react";
 
 const DisplayPictures = ({ pictureName }) => {
 
-  const source = `./public/images/${pictureName}`;
+  const source = `./images/${pictureName}`;
 
   return (
     <div className="h-100 d-flex justify-content-center align-items-center">
