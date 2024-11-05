@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Install dependencies
+      - name: Install Automation Dependencies
         run: npm install xlsx
 
       - name: Run excel conversion
@@ -45,6 +45,9 @@ jobs:
           git add ./public/images
           git commit -m "Automated update from config folder"
           git push
+      
+      - name: Install Project Dependecies
+        run: npm install
 
       - name: Build React app
         run: npm run build
