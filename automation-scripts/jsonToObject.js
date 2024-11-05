@@ -18,7 +18,7 @@ fs.readFile(inputFilePath, 'utf8', (err, data) => {
     const settingsData = JSON.parse(data);
 
     // Format the data for export in JavaScript
-    const jsContent = `export const currentClasses = ${JSON.stringify(settingsData, null, 2)};`;
+    const jsContent = `export const settings = ${JSON.stringify(settingsData, null, 2)};`;
 
     // Write the formatted content to the output JS file
     fs.writeFile(outputFilePath, jsContent, 'utf8', (err) => {

@@ -1,4 +1,4 @@
-export const currentClasses = [
+export const weeklySchedule = [
   {
     "id": 0,
     "day": "Mon",

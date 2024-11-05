@@ -20,7 +20,7 @@ fs.readdir(folderPath, (err, files) => {
   });
 
   // Prepare content for export in JavaScript format
-  const jsContent = `export const fileList = ${JSON.stringify(fileList, null, 2)};`;
+  const jsContent = `export const pictures = ${JSON.stringify(fileList, null, 2)};`;
 
   // Write the array of filenames to the output JS file
   fs.writeFile(outputFilePath, jsContent, 'utf8', (err) => {

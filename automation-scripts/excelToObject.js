@@ -80,7 +80,7 @@ const readClasses = (worksheet) => {
 
 // Convert and save the schedule
 const saveScheduleToFile = (outputFilePath, scheduleData) => {
-  const jsContent = `export const currentClasses = ${JSON.stringify(scheduleData, null, 2)};`;
+  const jsContent = `export const weeklySchedule = ${JSON.stringify(scheduleData, null, 2)};`;
   fs.writeFileSync(outputFilePath, jsContent);
   console.log(`Schedule saved to ${outputFilePath}`);
 };
