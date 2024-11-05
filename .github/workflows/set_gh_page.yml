@@ -19,8 +19,10 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Install Automation Dependencies
-        run: npm install xlsx
+      - name: Install Dependencies
+        run: |
+          npm install
+          npm install xlsx
 
       - name: Run excel conversion
         run: node ./automation-scripts/excelToObject.js
@@ -48,11 +50,6 @@ jobs:
           else
             echo "No changes to commit"
           fi
-      
-      - name: Install Project Dependecies
-        run: |
-          npm install @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
-          npm install bootstrap react-bootstrap
 
       - name: Build React app
         run: npm run build
