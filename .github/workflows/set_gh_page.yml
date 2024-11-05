@@ -35,7 +35,7 @@ jobs:
         run: |
           rm -rf ./public/images
           mkdir ./public/images
-          cp -r ./config/images ./public/images
+          cp -r ./config/images/* ./public/images
 
       - name: Commit and push changes
         run: |
