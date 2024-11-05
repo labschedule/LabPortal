@@ -1,4 +1,4 @@
-name: Convert Excel to JS Schedule
+name: Run Automation and Deploy Page
 
 # Trigger on push to the main branch
 on:
@@ -47,7 +47,9 @@ jobs:
           git push
       
       - name: Install Project Dependecies
-        run: npm install
+        run: |
+          npm install @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
+          npm install bootstrap react-bootstrap
 
       - name: Build React app
         run: npm run build
