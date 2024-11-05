@@ -31,6 +31,12 @@ jobs:
       - name: Run image list creation
         run: node ./automation-scripts/createImageList.js
 
+      - name: Copy images to correct folder
+        run: |
+          rm -r ./public/images
+          mkdir ./public/images
+          cp ./config/images ./public/images
+
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
