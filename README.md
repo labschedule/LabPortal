@@ -1,64 +1,36 @@
-## Lab-Schedule
+## LabPortal
 
-Lab-Schedule is a web app created to showcase the weekly schedule of ZB109 Consert
-lab in UniWA, Greece. The current repository of the web-app includes the node.js back-end
-that serves a react build folder for its front-end.
+LabPortal is a React js web app created that showcases the weekly schedule and multiple pictures
+about a university lab. It is meant to be placed on monitors outsite the labs to display any info
+needed.
 
-## Prerequisites
+Checkout out the demo [here](https://vaggm.github.io/LabPortal/)!
 
-Have node.js and npm installed.
+**The project doesn't have to be installed!** It can be configured and run as a github automatically
+based on the workflow provided.
 
-The following versions were used when creating the app:
+## Create your own LabPortal!
 
-- node.js v18.12.1
-- npm 8.19.2
+To create your own copy of this website you just have to fork this repository and set your own configurations!
+The workflow will make sure to load your configuration and set the app running.
 
+The [config directory](./config/) contains the following:
+- a weekly schedule file named [schedule.xlsx](./config/schedule.xlsx), with all the lab classes throughout the week
+- a set of images to display within the [/config/images/](./config/images/) directory
+- a set of display configurations
 
-## Installing the app
+Once a new push is done on the main branch, any updates on these files will be passed to the github page
+which will be available at:
 
-Follow these steps on a terminal window to install the app:
-
-- clone this repository to your machine
-
-```bash
-git clone https://github.com/VaggM/lab-schedule.git
 ```
-
-- cd to the repository folder
-
-```bash
-cd lab-schedule
+https://{GITHUB_USERNAME}.github.io/LabPortal/
 ```
-
-- install npm packages
-
-```bash
-npm install
-```
-
-## Running the app
-
-Before running the app you need to createa .env file to define the absolute 
-data folder path to it based on the [sample](.envsample). The file might 
-include an APP_PORT or else port 8000 is used by default.
-
-An example data folder can be found [here](./showcasing/data-example/). 
-Data is read every 10 minutes or when someone taps the update button in the 
-settings menu. The settings menu appears when someone taps the screen.
-
-To run the app open a terminal on the repository folder and run:
-
-```bash
-node app.js
-```
-
-The app can now be accessed through any browser on [http://localhost:8080](http://localhost:8080).
 
 ## Features
 
 This web-app showcases a weekly schedule by swapping between a daily display,
 a weekly display and some loaded images. Swaps happen every few seconds based 
-on a timer. App settings and images are set through a data folder on your machine.
+on a timer from the configurations.
 
 Daily display:
 
@@ -74,9 +46,7 @@ Weekly display:
 ![Weekly display](./showcasing/screenshots/weeklydisplay.png)
 
 The schedule is read from an excel file of the following format.
-(the excel read happens in the back-end and the classes are provided
-through an API, by changing the classes provided in that API url
-the front-end will fetch that data instead)
+(the excel read happens from the [corresponding automation file](./automation-scripts/excelToObject.js) in the workflow)
 
 > Every cell that has multiple lines writter is considered a class.
 >
@@ -90,12 +60,11 @@ the front-end will fetch that data instead)
 > The column of the cells represents the day of the class
 > (columnes B to G are converted to Monday throuh Saturday).
 
-The schedule should be saved in the data folder as "schedule.xlsx.". Check an example file [here](./showcasing/data-example/schedule.xlsx).
-The app will try to read it every time the Update button is triggered.
+The schedule should be saved in the configurations directory. Check the example file [here](./config/schedule.xlsx).
 
 Image display:
 
-- show each image saved in a folder "images" within the data folder
+- show each image from the corresponding config directory
 
 ![Image display](./showcasing/screenshots/imagedisplay.png)
 
@@ -104,17 +73,14 @@ It accepts .png, .jpg, .jpeg and .gif.
 
 ## App Settings
 
-The app can be modified through a settings.json file in the data folder.
-An example settings file can be found [here](./showcasing/data-example/settings.json).
-Settings are read every 10 minutes or when someone taps the update button 
-in the settings menu. The settings menu appears when someone taps the screen.
+The app can be modified through a settings.json file in the configurations folder.
+An example settings file can be found [here](./config/settings.json).
 
 | Setting Name | Description |
 | --- | --- |
-| labname | title on the top side of the app |
 | dailysplit | split limit for showcases classes on daily display |
 | weeklysplit | split limit for showcases classes on weekly display |
-| time | swap timer between displays |
+| time | swap timer between displays or images |
 
 ## Known Issues
 
@@ -124,4 +90,5 @@ get on top of each other.
 
 ## Future plans
 
-Remove daily and weekly displays if no schedule.xlsx is provided.
+1) Mobile compatibility
+2) Optional display of weekly schedule
