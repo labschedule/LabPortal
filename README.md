@@ -68,13 +68,13 @@ Image display:
 
 ![Image display](./showcasing/screenshots/imagedisplay.png)
 
-The app will do enough swaps to go through all the images in the data folder.
+The app will do enough swaps to go through all the images of the corresponding directory.
 It accepts .png, .jpg, .jpeg and .gif.
 
-## App Settings
+## App Configurations
 
-The app can be modified through a settings.json file in the configurations folder.
-An example settings file can be found [here](./config/settings.json).
+The app can be modified through a settings.json file in the configurations directory.
+An example the file can be found [here](./config/settings.json).
 
 | Setting Name | Description |
 | --- | --- |
