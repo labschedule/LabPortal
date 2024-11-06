@@ -1,70 +1,127 @@
-# Getting Started with Create React App
+## Lab-Schedule
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Lab-Schedule is a web app created to showcase the weekly schedule of ZB109 Consert
+lab in UniWA, Greece. The current repository of the web-app includes the node.js back-end
+that serves a react build folder for its front-end.
 
-## Available Scripts
+## Prerequisites
 
-In the project directory, you can run:
+Have node.js and npm installed.
 
-### `npm start`
+The following versions were used when creating the app:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- node.js v18.12.1
+- npm 8.19.2
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Installing the app
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Follow these steps on a terminal window to install the app:
 
-### `npm run build`
+- clone this repository to your machine
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone https://github.com/VaggM/lab-schedule.git
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- cd to the repository folder
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+cd lab-schedule
+```
 
-### `npm run eject`
+- install npm packages
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Running the app
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Before running the app you need to createa .env file to define the absolute 
+data folder path to it based on the [sample](.envsample). The file might 
+include an APP_PORT or else port 8000 is used by default.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+An example data folder can be found [here](./showcasing/data-example/). 
+Data is read every 10 minutes or when someone taps the update button in the 
+settings menu. The settings menu appears when someone taps the screen.
 
-## Learn More
+To run the app open a terminal on the repository folder and run:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+node app.js
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The app can now be accessed through any browser on [http://localhost:8080](http://localhost:8080).
 
-### Code Splitting
+## Features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This web-app showcases a weekly schedule by swapping between a daily display,
+a weekly display and some loaded images. Swaps happen every few seconds based 
+on a timer. App settings and images are set through a data folder on your machine.
 
-### Analyzing the Bundle Size
+Daily display:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- current and upcoming classes for the day
+- all classes for the day
 
-### Making a Progressive Web App
+![Daily display](./showcasing/screenshots/dailydisplay.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Weekly display:
 
-### Advanced Configuration
+- all classes for the whole week
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![Weekly display](./showcasing/screenshots/weeklydisplay.png)
 
-### Deployment
+The schedule is read from an excel file of the following format.
+(the excel read happens in the back-end and the classes are provided
+through an API, by changing the classes provided in that API url
+the front-end will fetch that data instead)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+> Every cell that has multiple lines writter is considered a class.
+>
+> The first line is its name and the second is its professor.
+>
+> The line of the cells represents the time of the class
+> (lines 3 to 15 are converted to 09:00 to 21:00 and are assumed
+> to take up one hour). If the cell is merged horizontally it will
+> add to its total hour length.
+> 
+> The column of the cells represents the day of the class
+> (columnes B to G are converted to Monday throuh Saturday).
 
-### `npm run build` fails to minify
+The schedule should be saved in the data folder as "schedule.xlsx.". Check an example file [here](./showcasing/data-example/schedule.xlsx).
+The app will try to read it every time the Update button is triggered.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Image display:
+
+- show each image saved in a folder "images" within the data folder
+
+![Image display](./showcasing/screenshots/imagedisplay.png)
+
+The app will do enough swaps to go through all the images in the data folder.
+It accepts .png, .jpg, .jpeg and .gif.
+
+## App Settings
+
+The app can be modified through a settings.json file in the data folder.
+An example settings file can be found [here](./showcasing/data-example/settings.json).
+Settings are read every 10 minutes or when someone taps the update button 
+in the settings menu. The settings menu appears when someone taps the screen.
+
+| Setting Name | Description |
+| --- | --- |
+| labname | title on the top side of the app |
+| dailysplit | split limit for showcases classes on daily display |
+| weeklysplit | split limit for showcases classes on weekly display |
+| time | swap timer between displays |
+
+## Known Issues
+
+The current version of the app doesn't work well
+with low resolution devices and components may
+get on top of each other.
+
+## Future plans
+
+Remove daily and weekly displays if no schedule.xlsx is provided.
