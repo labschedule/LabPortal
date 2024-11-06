@@ -1,96 +1,96 @@
 body {
-    font-family: Verdana !important;
+  font-family: Verdana !important;
 }
 
 .background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    animation: animateBackground 20s infinite;
-    background: linear-gradient(45deg, #6bb8ff, #3431fb, #6bb8ff, #3431fb);
-    background-size: 400% 400%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: animateBackground 20s infinite;
+  background: linear-gradient(45deg, #6bb8ff, #3431fb, #6bb8ff, #3431fb);
+  background-size: 400% 400%;
 }
 
 @keyframes animateBackground {
-    0% {
-        background-position: 0% 50%;
-    }
+  0% {
+      background-position: 0% 50%;
+  }
 
-    50% {
-        background-position: 100% 50%;
-    }
+  50% {
+      background-position: 100% 50%;
+  }
 
-    100% {
-        background-position: 0% 50%;
-    }
+  100% {
+      background-position: 0% 50%;
+  }
 }
 
 .header {
-    display: flex;
-    align-items: center;
-    /* background-color: #445257; */
-    /* box-shadow: 0 0 5px black; */
-    font-size: 3vw;
+  display: flex;
+  align-items: center;
+  /* background-color: #445257; */
+  /* box-shadow: 0 0 5px black; */
+  font-size: 3vw;
 }
 
 .header-left {
-    flex: 1;
+  flex: 1;
 }
 
 .header-center {
-    flex-grow: 1;
-    color: white;
-    text-shadow: 0 0 5px black;
+  flex-grow: 1;
+  color: white;
+  text-shadow: 0 0 5px black;
 }
 
 .header-right {
-    flex: 1;
-    color: white;
-    text-shadow: 0 0 5px black;
+  flex: 1;
+  color: white;
+  text-shadow: 0 0 5px black;
 }
 
 .slide-in-right {
-    animation: slideInRight 1s forwards;
+  animation: slideInRight 1s forwards;
 }
 
 .slide-out-left {
-    animation: slideOutLeft 1s forwards;
+  animation: slideOutLeft 1s forwards;
 }
 
 @keyframes slideInRight {
-    from {
-        transform: translateX(100%);
-    }
+  from {
+      transform: translateX(100%);
+  }
 
-    to {
-        transform: translateX(0);
-    }
+  to {
+      transform: translateX(0);
+  }
 }
 
 @keyframes slideOutLeft {
-    from {
-        transform: translateX(0);
-    }
+  from {
+      transform: translateX(0);
+  }
 
-    to {
-        transform: translateX(-100%);
-    }
+  to {
+      transform: translateX(-100%);
+  }
 }
 
 .daily-card-header {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .daily-card-item {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .single-card-header {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .single-card-body {
-    font-size: 18px;
+  font-size: 18px;
 }
