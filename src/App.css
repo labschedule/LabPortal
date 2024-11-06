@@ -9,7 +9,7 @@ body {
     width: 100%;
     height: 100%;
     animation: animateBackground 20s infinite;
-    background: linear-gradient(45deg, #ff6b6b, #007bff, #44bd32, #fbc531);
+    background: linear-gradient(45deg, #6bb8ff, #3431fb, #6bb8ff, #3431fb);
     background-size: 400% 400%;
 }
 
@@ -30,8 +30,8 @@ body {
 .header {
     display: flex;
     align-items: center;
-    background-color: #445257;
-    box-shadow: 0 0 5px black;
+    /* background-color: #445257; */
+    /* box-shadow: 0 0 5px black; */
     font-size: 3vw;
 }
 
@@ -41,8 +41,8 @@ body {
 
 .header-center {
     flex-grow: 1;
-    color: black;
-    box-shadow: 0 0 5px black;
+    color: white;
+    text-shadow: 0 0 5px black;
 }
 
 .header-right {
@@ -80,17 +80,17 @@ body {
 }
 
 .daily-card-header {
-    font-size: 1.5vw;
+    font-size: 20px;
 }
 
 .daily-card-item {
-    font-size: 1vw;
+    font-size: 16px;
 }
 
 .single-card-header {
-    font-size: 1.5vw;
+    font-size: 20px;
 }
 
 .single-card-body {
-    font-size: 1.3vw;
+    font-size: 18px;
 }

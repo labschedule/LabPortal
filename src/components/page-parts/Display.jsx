@@ -69,7 +69,7 @@ const Display = ({ timer, splitDaily, splitWeekly }) => {
     }
 
     return (
-        <main className="display-container" style={{ height: "85%" }}>
+        <main className="display-container" style={{ height: "100%" }}>
             <div className={`h-100 display-item ${animationClass}`}>
                 {displayComponent}
             </div>
