@@ -1,6 +1,5 @@
 // Import required modules
-const fs = require('fs');
-const path = require('path');
+import fs from "fs";
 
 // Define file paths
 const inputFilePath = './config/settings.json';

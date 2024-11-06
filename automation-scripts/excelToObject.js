@@ -1,5 +1,5 @@
-const fs = require("fs");
-const xlsx = require("xlsx");
+import fs from "fs";
+import xlsx from "xlsx";
 
 const get_schedule = (schedulePath) => {
   try {

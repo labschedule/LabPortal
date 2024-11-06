@@ -1,6 +1,6 @@
 // Import required modules
-const fs = require('fs');
-const path = require('path');
+import fs from "fs";
+import path from "path";
 
 // Define folder and output paths
 const folderPath = './config/images'; // Folder to read files from
