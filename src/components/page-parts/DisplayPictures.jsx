@@ -7,7 +7,7 @@ const DisplayPictures = ({ pictureName }) => {
   return (
     <div className="h-100 d-flex justify-content-center align-items-center">
 
-      <img src={source} alt="Lab Images" className="img-fluid" />
+      <img src={source} alt="Lab Images" className="img-fluid" style={{ maxHeight: "75%" }}/>
 
     </div>
   );
