@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 
 // Define folder and output paths
-const folderPath = './config/images'; // Folder to read files from
+const folderPath = './config/images/scanners/image'; // Folder to read files from
 const outputFilePath = './src/data/pictures.js'; // Output JS file
 
 // Read files in the folder
