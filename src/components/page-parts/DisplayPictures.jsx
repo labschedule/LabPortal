@@ -6,7 +6,7 @@ const DisplayPictures = ({ pictureName }) => {
   const source_qr = `./qrs/${pictureName}`;
 
   return (
-    <div className="h-100 d-flex justify-content-center align-items-center bg-light">
+    <div className="h-100 d-flex justify-content-center align-items-center bg-white">
       <div className="column w-50">
         <img src={source} alt="Diploma" className="img-fluid" style={{ maxHeight: "75%" }} />
       </div>
