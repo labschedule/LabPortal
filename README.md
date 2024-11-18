@@ -20,7 +20,7 @@ The [config directory](./config/) contains the following:
 - a set of display configurations
 
 Once a new push is done on the main branch, any updates on these files will be passed to the github page
-which will be available at:
+which is be available at:
 
 ```
 https://{GITHUB_USERNAME}.github.io/LabPortal/
@@ -62,14 +62,20 @@ The schedule is read from an excel file of the following format.
 
 The schedule should be saved in the configurations directory. Check the example file [here](./config/schedule.xlsx).
 
-Image display:
+Scanner image display:
 
-- show each image from the corresponding config directory
+- show images and links to their website through a qr code
 
 ![Image display](./showcasing/screenshots/imagedisplay.png)
 
 The app will do enough swaps to go through all the images of the corresponding directory.
 It accepts .png, .jpg, .jpeg and .gif.
+
+The scanners works in a two image folder setup, one for each displayed image and one of its corresponding QR code. **Both files must have the same filename.**
+
+Displayed image folder path: [/config/images/scanners/image/](./config/images/scanners/image/)
+
+Corresponding QR folder path: [/config/images/scanners/qr/](./config/images/scanners/qr/)
 
 ## App Configurations
 
