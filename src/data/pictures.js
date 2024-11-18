@@ -1,4 +1,1 @@
-export const pictures = [
-  "applications.png",
-  "contextawareness.png"
-];
+export const pictures = [];
