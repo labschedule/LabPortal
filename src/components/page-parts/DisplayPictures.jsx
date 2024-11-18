@@ -3,7 +3,7 @@ import React from "react";
 const DisplayPictures = ({ pictureName }) => {
 
   const source = `./images/${pictureName}`;
-  const source_qr = `./qr/${pictureName}`;
+  const source_qr = `./qrs/${pictureName}`;
 
   return (
     <div className="h-100 d-flex justify-content-center align-items-center bg-light">
