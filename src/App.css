@@ -9,7 +9,7 @@ body {
   width: 100%;
   height: 100%;
   animation: animateBackground 20s infinite;
-  background: linear-gradient(45deg, #6bb8ff, #3431fb, #6bb8ff, #3431fb);
+  background: linear-gradient(45deg, #43a0f6, #3431fb, #3431fb, #43a0f6);
   background-size: 400% 400%;
 }
 
