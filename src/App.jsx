@@ -1,6 +1,6 @@
 // import React, { useState } from "react";
 // import Header from "./components/page-parts/Header";
-import React from "react";
+import React, { useState } from "react";
 import Display from "./components/page-parts/Display";
 import "./App.css";
 import "./squares.css"
@@ -132,14 +132,21 @@ function App() {
   //   };
   // }, []);
 
+  const [backgroundEffects, setBackgroundEffects] = useState(true);
+
   return (
-    <div className="m-0 border-0 h-100 w-100 text-center background">
+    <div className={`m-0 border-0 h-100 w-100 text-center ${ (backgroundEffects) ? "background" : ""}`}>
       {/* <Header
         data={{ labName, timer, splitDaily, splitWeekly, lastUpdate }}
         api={{ updateWeeklySchedule, updateImages, updateOther, resetUpdateTimer }}
         api_status={{ loadSchedule, loadPhotos, loadOther }}
       /> */}
-      <Display timer={settings.timer} splitDaily={settings.splitDaily} splitWeekly={settings.splitWeekly} />
+      <Display 
+        timer={settings.timer} 
+        splitDaily={settings.splitDaily} 
+        splitWeekly={settings.splitWeekly} 
+        setBackgroundEffects={setBackgroundEffects} 
+      />
 
 
       <div className="area" >
@@ -155,7 +162,7 @@ function App() {
                     <li></li>
                     <li></li>
             </ul>
-    </div >
+      </div >
 
     </div>
   );

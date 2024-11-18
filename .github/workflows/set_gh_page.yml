@@ -39,12 +39,6 @@ jobs:
           mkdir ./public/images
           cp -r ./config/images/* ./public/images
 
-      - name: Copy qrs to correct folder
-        run: |
-          rm -rf ./public/qrs
-          mkdir ./public/qrs
-          cp -r ./config/qrs/* ./public/qrs
-
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"

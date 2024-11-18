@@ -2,8 +2,8 @@ import React from "react";
 
 const DisplayPictures = ({ pictureName }) => {
 
-  const source = `./images/${pictureName}`;
-  const source_qr = `./qrs/${pictureName}`;
+  const source = `./images/scanners/image/${pictureName}`;
+  const source_qr = `./images/scanners/qr/${pictureName}`;
 
   return (
     <div className="h-100 d-flex justify-content-center align-items-center bg-white">

@@ -5,7 +5,7 @@ import DisplayPictures from "./DisplayPictures";
 
 import { pictures } from "../../data/pictures";
 
-const Display = ({ timer, splitDaily, splitWeekly }) => {
+const Display = ({ timer, splitDaily, splitWeekly, setBackgroundEffects }) => {
 
     // Display Daily or Weekly with animation
     const [currentComponent, setCurrentComponent] = useState("DisplayDaily");
@@ -16,39 +16,53 @@ const Display = ({ timer, splitDaily, splitWeekly }) => {
     useEffect(() => {
 
       const interval = setInterval(() => {
-          setAnimationClass("slide-out-left");
 
-          setTimeout(() => {
+      if (currentComponent === "DisplayPictures")
+        setBackgroundEffects(false);
 
-          switch(currentComponent) {
-              case "DisplayDaily":
-                setCurrentComponent("DisplayWeekly");
-                break;
-              case "DisplayWeekly":
-                if (pictures.length !== 0){
-                  setCurrentComponent("DisplayPictures");
-                }
-                else {
-                  setCurrentComponent("DisplayDaily");
-                }
-                break;
-              case "DisplayPictures":
-                if (pictureCounter+1 < pictures.length){
-                  setPictureCounter(pictureCounter+1);
-                  setCurrentComponent("DisplayPictures");
-                }
-                else {
-                  setPictureCounter(0);
-                  setCurrentComponent("DisplayDaily");
-                }
-                break;
-              default:
+      if (pictureCounter+1 === pictures.length)
+        setBackgroundEffects(true);
+
+      setAnimationClass("slide-out-left");
+
+      setTimeout(() => {
+
+        switch(currentComponent) {
+            case "DisplayDaily":
+              setCurrentComponent("DisplayWeekly");
+              break;
+            case "DisplayWeekly":
+              if (pictures.length !== 0){
+                setCurrentComponent("DisplayPictures");
+              }
+              else {
                 setCurrentComponent("DisplayDaily");
-          }
+              }
+              break;
+            case "DisplayPictures":
+              if (pictureCounter+1 < pictures.length){
+                setPictureCounter(pictureCounter+1);
+                setCurrentComponent("DisplayPictures");
 
-          setAnimationClass("slide-in-right");
+              }
+              else {
+                setBackgroundEffects(true);
 
-          }, 900);
+                setPictureCounter(0);
+                setCurrentComponent("DisplayDaily");
+                // if (currentComponent !== "DisplayPictures")
+              }
+              break;
+            default:
+              setCurrentComponent("DisplayDaily");
+        }
+
+        // if (currentComponent !== "DisplayPictures")
+        //   setBackgroundEffects(true);
+
+        setAnimationClass("slide-in-right");
+
+        }, 900);
       }, timer*1000);
 
       return () => {
