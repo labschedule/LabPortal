@@ -33,7 +33,7 @@ const Display = ({ timer, splitDaily, splitWeekly, setBackgroundEffects }) => {
               setLastSchedule("DisplayDaily");
               setPictureCounter((pictureCounter+1<pictures.length)?pictureCounter+1:0);
               // if (pictureCounter >= pictures.length)
-                setPictureCounter(0);
+                // setPictureCounter(0);
               setCurrentComponent("DisplayPictures");
               break;
             case "DisplayWeekly":
