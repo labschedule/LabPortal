@@ -143,8 +143,8 @@ function App() {
       /> */}
       <Display 
         timer={settings.timer} 
-        splitDaily={settings.splitDaily} 
-        splitWeekly={settings.splitWeekly} 
+        splitDaily={settings.dailysplit} 
+        splitWeekly={settings.weeklysplit} 
         setBackgroundEffects={setBackgroundEffects} 
       />
 
