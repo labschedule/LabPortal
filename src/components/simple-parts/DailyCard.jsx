@@ -14,7 +14,7 @@ const DailyCard = ({ day, splitDisplay }) => {
       setDisplayedHalf((previousHalf) => 
         previousHalf === "firstHalf" ? "secondHalf" : "firstHalf"
       )
-    }, 2_500);
+    }, 5_000);
 
     return () => {
       clearInterval(interval);
