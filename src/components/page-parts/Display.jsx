@@ -66,7 +66,7 @@ const Display = ({ timer, splitDaily, splitWeekly, setBackgroundEffects }) => {
       return () => {
           clearInterval(interval);
       };
-    }, [currentComponent, pictureCounter, timer]);
+    }, [currentComponent, timer]);
 
 
     switch (currentComponent) {
