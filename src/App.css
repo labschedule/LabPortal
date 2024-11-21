@@ -60,11 +60,11 @@ body {
 }
 
 .slide-in-right {
-  animation: slideInRight 1s forwards;
+  animation: slideInRight 2s forwards;
 }
 
 .slide-out-left {
-  animation: slideOutLeft 1s forwards;
+  animation: slideOutLeft 2s forwards;
 }
 
 @keyframes slideInRight {
