@@ -61,6 +61,8 @@ const Display = ({ timer, splitDaily, splitWeekly, setBackgroundEffects }) => {
         }, 1800);
       }, timer*1000);
 
+      console.log(pictureCounter);
+
       return () => {
           clearInterval(interval);
       };
