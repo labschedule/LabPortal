@@ -10,10 +10,12 @@ import { pictures } from "./data/pictures";
 import { settings } from "./data/settings";
 
 
-const preloadImages = (imageUrls) => {
-  imageUrls.forEach((url) => {
+const preloadImages = (pictureNames) => {
+  pictureNames.forEach((name) => {
     const img = new Image();
-    img.src = url;
+    img.src = `./images/scanners/image/${name}`;
+    const img_qr = new Image();
+    img_qr.src = `./images/scanners/qr/${name}}`;
   });
 };
 
