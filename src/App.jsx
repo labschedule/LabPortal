@@ -15,7 +15,7 @@ const preloadImages = (pictureNames) => {
     const img = new Image();
     img.src = `./images/scanners/image/${name}`;
     const img_qr = new Image();
-    img_qr.src = `./images/scanners/qr/${name}}`;
+    img_qr.src = `./images/scanners/qr/${name}`;
   });
 };
 
