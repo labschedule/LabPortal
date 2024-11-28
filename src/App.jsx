@@ -1,13 +1,21 @@
 // import React, { useState } from "react";
 // import Header from "./components/page-parts/Header";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Display from "./components/page-parts/Display";
 import "./App.css";
 import "./squares.css"
 
 // import { weeklySchedule } from "./data/schedule";
-// import { pictures } from "./data/pictures";
+import { pictures } from "./data/pictures";
 import { settings } from "./data/settings";
+
+
+const preloadImages = (imageUrls) => {
+  imageUrls.forEach((url) => {
+    const img = new Image();
+    img.src = url;
+  });
+};
 
 /*
 Background Gradients From -- 
@@ -131,6 +139,10 @@ function App() {
   //     clearInterval(interval);
   //   };
   // }, []);
+
+  useEffect(() => {
+    preloadImages(pictures);
+  }, []);
 
   const [backgroundEffects, setBackgroundEffects] = useState(true);
 
