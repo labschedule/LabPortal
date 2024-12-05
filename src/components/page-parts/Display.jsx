@@ -5,7 +5,7 @@ import DisplayPictures from "./DisplayPictures";
 
 import { pictures } from "../../data/pictures";
 
-const Display = ({ timer, splitDaily, splitWeekly, setBackgroundEffects }) => {
+const Display = ({ timer, splitDaily, splitWeekly, picturesObj }) => {
 
     // Display Daily or Weekly with animation
     const [currentComponent, setCurrentComponent] = useState("DisplayDaily");
@@ -31,19 +31,18 @@ const Display = ({ timer, splitDaily, splitWeekly, setBackgroundEffects }) => {
         switch(currentComponent) {
             case "DisplayDaily":
               setLastSchedule("DisplayDaily");
-              setPictureCounter((pictureCounter+1<pictures.length)?pictureCounter+1:0);
               // if (pictureCounter >= pictures.length)
                 // setPictureCounter(0);
               setCurrentComponent("DisplayPictures");
               break;
             case "DisplayWeekly":
-              setLastSchedule("DisplayWEekly");
-              setPictureCounter((pictureCounter+1<pictures.length)?pictureCounter+1:0);
+              setLastSchedule("DisplayWeekly");
               // if (pictureCounter >= pictures.length)
                 // setPictureCounter(0);
               setCurrentComponent("DisplayPictures");
               break;
             case "DisplayPictures":
+              setPictureCounter((pictureCounter+1<pictures.length)?pictureCounter+1:0);
               if (lastSchedule == "DisplayDaily")
                 setCurrentComponent("DisplayWeekly");
               else
@@ -61,7 +60,7 @@ const Display = ({ timer, splitDaily, splitWeekly, setBackgroundEffects }) => {
         }, 1800);
       }, timer*1000);
 
-      console.log(pictureCounter);
+      // console.log(pictureCounter);
 
       return () => {
           clearInterval(interval);
@@ -77,7 +76,7 @@ const Display = ({ timer, splitDaily, splitWeekly, setBackgroundEffects }) => {
           displayComponent = <DisplayWeekly splitWeekly={splitWeekly} />;
           break;
         default:
-          displayComponent = <DisplayPictures pictureName={pictures[pictureCounter]} />;
+          displayComponent = <DisplayPictures picture={picturesObj[pictureCounter]} />;
     }
 
     return (
