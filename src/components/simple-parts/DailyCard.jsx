@@ -17,9 +17,6 @@ const split2parts = (part, total) => {
 
 const DailyCard = ({ day, splitDisplay }) => {
 
-  // const [displayedHalf, setDisplayedHalf] = useState("firstHalf");
-  const [start, setStart] = useState(0);
-  const [end, setEnd] = useState(0+splitDisplay);
   const [split, setSplit] = useState(0);
   const [splits, setSplits] = useState([]);
   const [dispClasses, setDispClasses] = useState([]);
@@ -52,12 +49,12 @@ const DailyCard = ({ day, splitDisplay }) => {
   useEffect(() => {
     // console.log(classes[0], dispClasses[0]);
     const interval = setInterval(() => {
-      console.log(classes?.[0]?.key !== dispClasses?.[0]?.key);
+      // console.log(classes?.[0]?.key !== dispClasses?.[0]?.key);
       const c = classes.slice(split*splitDisplay,split*splitDisplay+splitDisplay);
       setDispClasses(c);
       setSplit((prev) => (prev+1<splits.length)?prev+1:0);
       
-    }, 5_000);
+    }, 2_500);
 
     return () => {
       clearInterval(interval);
