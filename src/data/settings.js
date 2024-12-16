@@ -1,5 +1,5 @@
 export const settings = {
-  "dailysplit": 5,
+  "dailysplit": 3,
   "weeklysplit": 3,
-  "timer": 20
+  "timer": 1000000
 };

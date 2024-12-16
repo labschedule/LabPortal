@@ -37,9 +37,9 @@ function App() {
     preloadImages(pictures);
   }, []);
 
-  useEffect(() => {
-    console.log("Updated picturesObj:", picturesObj);
-  }, [picturesObj])
+  // useEffect(() => {
+  //   console.log("Updated picturesObj:", picturesObj);
+  // }, [picturesObj])
 
 
   return (
@@ -56,8 +56,8 @@ function App() {
         picturesObj={picturesObj} 
       />
 
-
-      <div className="area" >
+      {/* Animations for rolling squres */}
+      {/* <div className="area" >
             <ul className="circles">
                     <li></li>
                     <li></li>
@@ -70,7 +70,7 @@ function App() {
                     <li></li>
                     <li></li>
             </ul>
-      </div >
+      </div > */}
 
     </div>
   );

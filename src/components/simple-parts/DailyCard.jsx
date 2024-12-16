@@ -21,19 +21,10 @@ const DailyCard = ({ day, splitDisplay }) => {
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(0+splitDisplay);
   const [split, setSplit] = useState(0);
-  const splits = split2parts(1, classes.length);
+  const [splits, setSplits] = useState([]);
+  const [dispClasses, setDispClasses] = useState([]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSplit((prevSplit) => (prevSplit+1<splits.length)? prevSplit+1:0)
-      setStart(split.start);
-      setEnd(split.finish);
-    }, 5_000);
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, [split]);
 
   const dailySchedule = weeklySchedule.filter(
     (item) => item.day === day.slice(0, 3)
@@ -50,6 +41,29 @@ const DailyCard = ({ day, splitDisplay }) => {
     />
   ));
 
+  useEffect(() => {
+    setSplits(split2parts(splitDisplay, classes.length));
+    const c = classes.slice(0,splitDisplay);
+    setDispClasses(c);
+    setSplit((prev) => (prev+1<splits.length)?prev+1:0);
+  }, []);
+
+
+  useEffect(() => {
+    // console.log(classes[0], dispClasses[0]);
+    const interval = setInterval(() => {
+      console.log(classes?.[0]?.key !== dispClasses?.[0]?.key);
+      const c = classes.slice(split*splitDisplay,split*splitDisplay+splitDisplay);
+      setDispClasses(c);
+      setSplit((prev) => (prev+1<splits.length)?prev+1:0);
+      
+    }, 5_000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [dispClasses]);
+
   return (
     <section
       className="h-100" style={{paddingRight: "0px", paddingLeft: "0px"}}
@@ -65,33 +79,27 @@ const DailyCard = ({ day, splitDisplay }) => {
             {day}
           </div>
           <div className="card-body daily-card-item">
-
-            <div> 
-              {classes.slice(start, end)}
-              <div className="mt-3">
-                <FontAwesomeIcon icon={faChevronDown} size="xl"/>
-              </div>
-            </div>
-              
-            {/* {classes.length > splitDisplay ? (
-              displayedHalf === "firstHalf" ? (
-                <div> 
-                  {classes.slice(0, splitDisplay)}
-                  <div className="mt-3">
-                    <FontAwesomeIcon icon={faChevronDown} size="xl"/>
-                  </div>
-                </div>
-              ) : (
-                <div> 
+            <div>
+              { (classes?.[0]?.key !== dispClasses?.[0]?.key) ? (
                   <div className="mb-3">
                     <FontAwesomeIcon icon={faChevronDown} size="xl" rotation={180} />
                   </div>
-                  {classes.slice(splitDisplay, classes.length)}
-                </div>
-              ) 
-            ) : (
-              classes
-            )} */}
+                ) : (
+                  <div> 
+                  </div>
+                )
+              }
+              {dispClasses}
+              { (classes?.at(-1)?.key !== dispClasses?.at(-1)?.key) ? (
+                  <div className="mt-3">
+                    <FontAwesomeIcon icon={faChevronDown} size="xl" />
+                  </div>
+                ) : (
+                  <div> 
+                  </div>
+                )
+              }
+            </div>
           </div>
         </div>
       </div>
