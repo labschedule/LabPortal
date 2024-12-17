@@ -50,7 +50,7 @@ const DailyCard = ({ day, splitDisplay }) => {
     // console.log(classes[0], dispClasses[0]);
     const interval = setInterval(() => {
       // console.log(classes?.[0]?.key !== dispClasses?.[0]?.key);
-      const c = classes.slice(split*splitDisplay,split*splitDisplay+splitDisplay);
+      const c = classes.slice(split*splitDisplay,(split+1)*splitDisplay);
       setDispClasses(c);
       setSplit((prev) => (prev+1<splits.length)?prev+1:0);
       
@@ -87,7 +87,7 @@ const DailyCard = ({ day, splitDisplay }) => {
                 )
               }
               {dispClasses}
-              { (classes?.at(-1)?.key !== dispClasses?.at(-1)?.key) ? (
+              { (classes?.[classes.length-1]?.key !== dispClasses?.[dispClasses.length-1]?.key) ? (
                   <div className="mt-3">
                     <FontAwesomeIcon icon={faChevronDown} size="xl" />
                   </div>
