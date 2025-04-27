@@ -4,6 +4,7 @@ import DisplayWeekly from "./DisplayWeekly";
 import DisplayPictures from "./DisplayPictures";
 
 import { pictures } from "../../data/pictures";
+import { weeklySchedule } from "../../data/schedule";
 
 const Display = ({ timer, splitDaily, splitWeekly, picturesObj }) => {
 
@@ -43,13 +44,16 @@ const Display = ({ timer, splitDaily, splitWeekly, picturesObj }) => {
               break;
             case "DisplayPictures":
               setPictureCounter((pictureCounter+1<pictures.length)?pictureCounter+1:0);
-              if (lastSchedule == "DisplayDaily")
+              if (weeklySchedule.length == 0)
+                setCurrentComponent("Default");
+              else if (lastSchedule == "DisplayDaily")
                 setCurrentComponent("DisplayWeekly");
               else
                 setCurrentComponent("DisplayDaily");
               break;
             default:
-              setCurrentComponent("DisplayDaily");
+              setPictureCounter((pictureCounter+1<pictures.length)?pictureCounter+1:0);
+              setCurrentComponent("DisplayPictures");
         }
 
         // if (currentComponent !== "DisplayPictures")
