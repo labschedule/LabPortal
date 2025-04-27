@@ -15,6 +15,7 @@ const get_schedule = (schedulePath) => {
 
   } catch (error) {
     console.error(error);
+    return [];
   }
 };
 
