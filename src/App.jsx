@@ -24,16 +24,30 @@ function App() {
 
   useEffect(() => {
     const preloadImages = (pictureNames) => {
-      const images = pictureNames.map((name) => {
-        const img = new Image();
-        img.src = `./images/scanners/image/${name}`;
-        const img_qr = new Image();
-        img_qr.src = `./images/scanners/qr/${name}`;
-        return { name, img, img_qr };
+      const loadPromises = pictureNames.map((name) => {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.src = `./images/${name}`;
+  
+          const img_qr = new Image();
+          img_qr.src = `./qr/${name}`;
+  
+          img_qr.onload = () => {
+            // QR exists
+            resolve({ name, img, img_qr });
+          };
+          img_qr.onerror = () => {
+            // QR doesn't exist
+            resolve({ name, img });
+          };
+        });
       });
-      setPicturesObj(images);
-    };  
-
+  
+      Promise.all(loadPromises).then((images) => {
+        setPicturesObj(images);
+      });
+    };
+  
     preloadImages(pictures);
   }, []);
 

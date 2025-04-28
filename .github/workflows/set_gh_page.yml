@@ -38,6 +38,12 @@ jobs:
           rm -rf ./public/images
           mkdir ./public/images
           cp -r ./config/images/* ./public/images
+      
+      - name: Copy qr to correct folder
+        run: |
+          rm -rf ./public/qr
+          mkdir ./public/qr
+          cp -r ./config/qr/* ./public/qr
 
       - name: Commit and push changes
         run: |
