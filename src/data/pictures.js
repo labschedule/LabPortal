@@ -8,5 +8,6 @@ export const pictures = [
   "modeling.png",
   "onlinetool.png",
   "opensource.png",
-  "stability.png"
+  "stability.png",
+  "useofcentral.png"
 ];
