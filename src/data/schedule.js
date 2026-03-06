@@ -3,89 +3,122 @@ export const weeklySchedule = [
     "id": 0,
     "day": "Mon",
     "time": "17:00 - 19:00",
-    "title": "AIDL_B_AS03 Autonomous vehicles and drones\r",
-    "professor": "Πυρομάλης, Παπαγέωργας"
+    "title": "AIDL_A01\r",
+    "professor": " Leligou-Nikolaou\r"
   },
   {
     "id": 1,
     "day": "Mon",
     "time": "19:00 - 22:00",
-    "title": "AIDL_B_AS01 Signal Processing, Pattern Recognition & Machine Learning\r",
-    "professor": "Ραγκούηση, Κάντζος"
+    "title": "AIDL_A02\r",
+    "professor": "Κασνέσης\r"
   },
   {
     "id": 2,
     "day": "Tue",
-    "time": "17:00 - 19:00",
-    "title": "AIDL_B01 Data Centers and Infrastructure for supporting AI\r",
-    "professor": "Κάχρης"
+    "time": "11:00 - 13:00",
+    "title": "Αντικειμενοστραφής Προγραμματισμός (E)\r",
+    "professor": "Φειδάκης Μιχαήλ - "
   },
   {
     "id": 3,
     "day": "Tue",
-    "time": "19:00 - 22:00",
-    "title": "AIDL_B_AS02 Advanced Control and Robotic systems\r",
-    "professor": "Ζαχαρία, Παπουτσιδάκης"
+    "time": "13:00 - 15:00",
+    "title": "Αντικειμενοστραφής Προγραμματισμός (E)\r",
+    "professor": "Φειδάκης Μιχαήλ - "
   },
   {
     "id": 4,
     "day": "Wed",
     "time": "15:00 - 17:00",
-    "title": " ΑΔΕ_ΕΕΕ7-2.6 \r",
-    "professor": "Φειδάκης\r"
+    "title": "Αντικειμενοστραφής Προγραμματισμός (E)\r",
+    "professor": "Φειδάκης Μιχαήλ - "
   },
   {
     "id": 5,
     "day": "Wed",
     "time": "17:00 - 19:00",
-    "title": "AIDL_B_CS03 Wearable and Affective Computing\r",
-    "professor": "Φειδάκης, Πριννιωτάκης, Γαλατά"
+    "title": "AIDL_A03\r",
+    "professor": "Nikolaou- Pyromalis\r"
   },
   {
     "id": 6,
     "day": "Wed",
     "time": "19:00 - 22:00",
-    "title": "AIDL_B_CS02 Artificial Intelligence in Healthcare and Biometrics\r",
-    "professor": "Βεζάκης, Ματσόπουλος"
+    "title": "AIDL_Α04\r",
+    "professor": "Papadopoulos\r"
   },
   {
     "id": 7,
     "day": "Thu",
-    "time": "11:00 - 12:00",
-    "title": "Ειδικά Θέματα Δικτύων και Ασφάλεια\r",
-    "professor": "Πατρικάκης"
+    "time": "11:00 - 13:00",
+    "title": "Αντικειμενοστραφής Προγραμματισμός (E)\r",
+    "professor": "Φειδάκης Μιχαήλ - "
   },
   {
     "id": 8,
     "day": "Thu",
-    "time": "16:00 - 17:00",
-    "title": " ΑΔΕ_ΕΕΕ7-2.6 \r",
-    "professor": "Φειδάκης\r"
+    "time": "13:00 - 15:00",
+    "title": "Αντικειμενοστραφής Προγραμματισμός (E)\r",
+    "professor": "Φειδάκης Μιχαήλ - "
   },
   {
     "id": 9,
     "day": "Thu",
-    "time": "17:00 - 19:00",
-    "title": "AIDL_B02 Advanced Topics in Deep Learning\r",
-    "professor": "Κασνέσης"
+    "time": "19:00 - 20:00",
+    "title": "Αντικειμενοστραφής Προγραμματισμός (E)\r",
+    "professor": "Φειδάκης Μιχαήλ - "
   },
   {
     "id": 10,
-    "day": "Thu",
-    "time": "19:00 - 22:00",
-    "title": "AIDL_B_CS01 Natural Language Processing with Deep\r",
-    "professor": "Κασνέσης"
+    "day": "Fri",
+    "time": "09:00 - 11:00",
+    "title": "Δίκτυα (Ε)\r",
+    "professor": "Φερλες"
   },
   {
     "id": 11,
-    "time": "13:00 - 16:00",
-    "title": "Ειδικά Θέματα Δικτύων και Ασφάλεια\r",
-    "professor": "Πατρικάκης Χαράλαμπος \r"
+    "day": "Fri",
+    "time": "13:00 - 15:00",
+    "title": "Δίκτυα (Ε)\r",
+    "professor": "Φερλες"
   },
   {
     "id": 12,
+    "day": "Fri",
+    "time": "15:00 - 17:00",
+    "title": "Δίκτυα (Ε)\r",
+    "professor": "Φερλες"
+  },
+  {
+    "id": 13,
+    "day": "Fri",
+    "time": "18:00 - 21:00",
+    "title": "AIDL_A05\r",
+    "professor": "Patrikakis -invited\r"
+  },
+  {
+    "id": 14,
+    "time": "09:00 - 11:00",
+    "title": "ΕΕΕ.6.4: Δίκτυα Υπολογιστών [6-1]\r",
+    "professor": "Πατρικάκης Χαράλαμπος\r"
+  },
+  {
+    "id": 15,
     "time": "13:00 - 16:00",
-    "title": " ΑΔΕ_ΕΕΕ7-2.6 \r",
-    "professor": "Φειδάκης\r"
+    "title": "ΕΕ.2.5: Αντικειμενοστραφής Προγραμματισμός\r",
+    "professor": "Πατρικάκης Χαράλαμπος [2.5-3]\r"
+  },
+  {
+    "id": 16,
+    "time": "16:00 - 19:00",
+    "title": "ΕΕΕ.2.5: Αντικειμενοστραφής Προγραμματισμός [2.5-1]\r",
+    "professor": "Φειδάκης Μιχαήλ\r"
+  },
+  {
+    "id": 17,
+    "time": "11:00 - 13:00",
+    "title": "ΕΕΕ.6.4: Δίκτυα Υπολογιστών [6-1]\r",
+    "professor": "Πατρικάκης Χαράλαμπος\r"
   }
 ];
